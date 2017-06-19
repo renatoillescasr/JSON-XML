@@ -9,24 +9,24 @@ function cargarDatosServicios() {
     dataType: 'xml',
     success: function(data) {
       $(data).find('servicio').each(function(){
-        //captura el atributo "tipo" del tag "servicio" de servicios_basicos.xml
-        $servicio = $(this).attr('tipo');
-        console.log($servicio);
+         let control = $(this).attr('tipo');
+         console.log(control);
 
-        let p_nombre = $('<p></p>');
-        var nombre = $(this).find('nombre').text();
-        p_nombre.append(nombre);
-        $(".energía").append(p_nombre);
+         let p_nombre = $('<p></p>');
+         var nombre = $(this).find('nombre').text();
+         p_nombre.append(nombre);
+         $(".potable").append(p_nombre);
 
-        let p_direccion = $('<p></p>');
-        var direccion = $(this).find('direccion').text();
-        p_direccion.append(direccion);
-        $(".energía").append(p_direccion);
+         //captura el atributo "tipo" del tag "servicio" de servicios_basicos.xml
+          let p_direccion = $('<p></p>');
+          var direccion = $(this).find('direccion').text();
+          p_direccion.append(direccion);
+          $(".agua").append(p_direccion);
 
-        let p_telefono = $('<p></p>');
-        var telefono = $(this).find('telefono').text();
-        p_telefono.append(telefono);
-        $(".energía").append(p_telefono);
+          let p_telefono = $('<p></p>');
+          var telefono = $(this).find('telefono').text();
+          p_telefono.append(telefono);
+          $(".agua").append(p_telefono);
       });
     },
     type: 'GET'
@@ -37,7 +37,6 @@ function cargarUsuarios() {
   $.getJSON("data/gastos_personales.json", function(data) {
     //Leer del Json.nombre
     for(var i=0 ; i<data.length ; i++){
-      //console.log(data[i].nombre);
       //Leer los nombres del json
       var $p_nombre = $('<h3></h3>');
       $p_nombre.text(data[i].nombre);
